@@ -1,0 +1,39 @@
+# Node.js
+**/node_modules/
+**/.next/
+**/dist/
+**/.turbo/
+
+# TypeScript
+**/*.tsbuildinfo
+
+# Environment files
+**/.env
+**/.env.*
+
+# Logs
+**/*.log
+
+# Editor & System files
+.DS_Store
+Thumbs.db
+.vscode/
+*.code-workspace
+
+# Prettier / ESLint cache
+**/.eslintcache
+
+# Certificates
+nginx/certs/
+**/cert.key
+**/cert.crt
+
+# Docker
+**/docker-compose.override.yml
+**/docker-volume-data/
+
+# Temporary files
+**/.cache/
+**/tmp/
+**/*.swp
+**/*.swo

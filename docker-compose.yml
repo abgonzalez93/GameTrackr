@@ -1,0 +1,65 @@
+services:
+  frontend:
+    build:
+      context: ./gametrackr-frontend
+    container_name: gametrackr-frontend
+    env_file:
+      - ./gametrackr-frontend/.env
+    environment:
+      - NODE_ENV=development
+      - WATCHPACK_POLLING=true
+    volumes:
+      - ./gametrackr-frontend:/app
+    networks:
+      - internal
+
+  backend:
+    build:
+      context: ./gametrackr-backend
+    container_name: gametrackr-backend
+    env_file:
+      - ./gametrackr-backend/.env
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./gametrackr-backend:/app
+    networks:
+      - internal
+    depends_on:
+      - database
+
+  database:
+    image: postgres:latest
+    container_name: gametrackr-database
+    restart: always
+    env_file:
+      - ./gametrackr-backend/.env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - internal
+
+  nginx:
+    image: nginx:latest
+    container_name: gametrackr-nginx
+    ports:
+      - "443:443"
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d:ro
+      - ./nginx/certs:/etc/ssl/private:ro
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - internal
+      - public
+    restart: unless-stopped
+
+networks:
+  internal:
+    driver: bridge
+  public:
+    driver: bridge
+
+volumes:
+  pgdata:

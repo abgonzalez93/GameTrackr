@@ -1,0 +1,6 @@
+[submodule "gametrackr-frontend"]
+	path = gametrackr-frontend
+	url = https://github.com/abgonzalez93/GameTrackr-Frontend.git
+[submodule "gametrackr-backend"]
+	path = gametrackr-backend
+	url = https://github.com/abgonzalez93/GameTrackr-Backend.git
