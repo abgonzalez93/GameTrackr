@@ -10,9 +10,7 @@ services:
     volumes:
       - ./gametrackr-frontend:/app
     networks:
-      - internal
-    extra_hosts:
-      - "api.gametrackr.localhost:host.docker.internal"
+      - gametrackr-network
 
   backend:
     build:
@@ -23,7 +21,9 @@ services:
     volumes:
       - ./gametrackr-backend:/app
     networks:
-      - internal
+      - gametrackr-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     depends_on:
       - database
 
@@ -36,7 +36,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:
-      - internal
+      - gametrackr-network
 
   nginx:
     image: nginx:latest
@@ -50,15 +50,11 @@ services:
       - frontend
       - backend
     networks:
-      - internal
-      - public
+      - gametrackr-network
     restart: unless-stopped
 
 networks:
-  internal:
-    driver: bridge
-  public:
-    driver: bridge
+  gametrackr-network:
 
 volumes:
   pgdata:
