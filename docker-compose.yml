@@ -11,6 +11,8 @@ services:
       - ./gametrackr-frontend:/app
     networks:
       - internal
+    extra_hosts:
+      - "api.gametrackr.localhost:host.docker.internal"
 
   backend:
     build:
