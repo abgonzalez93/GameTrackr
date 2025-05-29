@@ -38,20 +38,20 @@ services:
     networks:
       - gametrackr-network
 
-#  nginx:
-#    image: nginx:latest
-#    container_name: gametrackr-nginx
-#    ports:
-#      - "443:443"
-#    volumes:
-#      - ./nginx/conf:/etc/nginx/conf.d:ro
-#      - ./nginx/certs:/etc/ssl/private:ro
-#   depends_on:
-#      - frontend
-#      - backend
-#    networks:
-#      - gametrackr-network
-#    restart: unless-stopped
+  nginx:
+    image: nginx:latest
+    container_name: gametrackr-nginx
+    ports:
+      - "443:443"
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d:ro
+      - ./nginx/certs:/etc/ssl/private:ro
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - gametrackr-network
+    restart: unless-stopped
 
 networks:
   gametrackr-network:
