@@ -8,7 +8,7 @@ services:
     environment:
       - WATCHPACK_POLLING=true
     volumes:
-      - ./gametrackr-frontend:/app
+      - gametrackr-frontend:/app
     networks:
       - gametrackr-network
 
@@ -19,7 +19,7 @@ services:
     env_file:
       - ./gametrackr-backend/.env
     volumes:
-      - ./gametrackr-backend:/app
+      - gametrackr-backend:/app
     networks:
       - gametrackr-network
     extra_hosts:
@@ -42,7 +42,8 @@ services:
     image: nginx:latest
     container_name: gametrackr-nginx
     ports:
-      - "443:443"
+      - 80:80
+      - 443:443
     volumes:
       - ./nginx/conf:/etc/nginx/conf.d:ro
       - ./nginx/certs:/etc/ssl/private:ro
@@ -57,4 +58,8 @@ networks:
   gametrackr-network:
 
 volumes:
+  gametrackr-frontend:
+    driver: local
+  gametrackr-backend:
+    driver: local
   pgdata:
