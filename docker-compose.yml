@@ -1,27 +1,27 @@
 services:
   frontend:
     build:
-      context: ./gametrackr-frontend
-    container_name: gametrackr-frontend
+      context: ./trackplay-frontend
+    container_name: trackplay-frontend
     env_file:
-      - ./gametrackr-frontend/.env
+      - ./trackplay-frontend/.env
     environment:
       - WATCHPACK_POLLING=true
     volumes:
-      - ./gametrackr-frontend:/app
+      - ./trackplay-frontend:/app
     networks:
-      - gametrackr-network
+      - trackplay-network
 
   backend:
     build:
-      context: ./gametrackr-backend
-    container_name: gametrackr-backend
+      context: ./trackplay-backend
+    container_name: trackplay-backend
     env_file:
-      - ./gametrackr-backend/.env
+      - ./trackplay-backend/.env
     volumes:
-      - ./gametrackr-backend:/app
+      - ./trackplay-backend:/app
     networks:
-      - gametrackr-network
+      - trackplay-network
     extra_hosts:
       - "host.docker.internal:host-gateway"
     depends_on:
@@ -29,18 +29,18 @@ services:
 
   database:
     image: postgres:latest
-    container_name: gametrackr-database
+    container_name: trackplay-database
     restart: always
     env_file:
-      - ./gametrackr-backend/.env
+      - ./trackplay-backend/.env
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:
-      - gametrackr-network
+      - trackplay-network
 
   nginx:
     image: nginx:latest
-    container_name: gametrackr-nginx
+    container_name: trackplay-nginx
     ports:
       - 80:80
       - 443:443
@@ -51,11 +51,11 @@ services:
       - frontend
       - backend
     networks:
-      - gametrackr-network
+      - trackplay-network
     restart: unless-stopped
 
 networks:
-  gametrackr-network:
+  trackplay-network:
 
 volumes:
   pgdata:

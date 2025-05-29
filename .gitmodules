@@ -1,12 +1,12 @@
-[submodule "gametrackr-frontend"]
-	path = gametrackr-frontend
-	url = https://github.com/abgonzalez93/GameTrackr-Frontend.git
+[submodule "trackplay-frontend"]
+	path = trackplay-frontend
+	url = https://github.com/abgonzalez93/TrackPlay-Frontend.git
 	branch = develop
-[submodule "gametrackr-backend"]
-	path = gametrackr-backend
-	url = https://github.com/abgonzalez93/GameTrackr-Backend.git
+[submodule "trackplay-backend"]
+	path = trackplay-backend
+	url = https://github.com/abgonzalez93/TrackPlay-Backend.git
 	branch = develop
-[submodule "gametrackr-core"]
-	path = gametrackr-core
-	url = https://github.com/abgonzalez93/GameTrackr-Core.git
+[submodule "trackplay-core"]
+	path = trackplay-core
+	url = https://github.com/abgonzalez93/TrackPlay-Core.git
 	branch = develop

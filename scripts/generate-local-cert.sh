@@ -10,7 +10,7 @@ CERT_NAME="cert.crt"
 KEY_NAME="cert.key"
 
 # Dominios locales
-DOMAINS="gametrackr.localhost api.gametrackr.localhost"
+DOMAINS="trackplay.localhost api.trackplay.localhost"
 
 # Crear carpeta si no existe
 mkdir -p "$CERT_DIR"
@@ -22,8 +22,8 @@ echo "→ Generando certificados con mkcert para: $DOMAINS"
 mkcert $DOMAINS
 
 # Obtener el archivo recién generado (.pem y -key.pem)
-NEW_CERT=$(ls -t gametrackr*.pem | grep -v '\-key.pem' | head -n 1)
-NEW_KEY=$(ls -t gametrackr*-key.pem | head -n 1)
+NEW_CERT=$(ls -t trackplay*.pem | grep -v '\-key.pem' | head -n 1)
+NEW_KEY=$(ls -t trackplay*-key.pem | head -n 1)
 
 # Verifica que ambos existen
 if [[ ! -f "$NEW_CERT" || ! -f "$NEW_KEY" ]]; then
