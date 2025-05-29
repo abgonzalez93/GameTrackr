@@ -37,3 +37,6 @@ nginx/certs/
 **/tmp/
 **/*.swp
 **/*.swo
+
+#npm
+.npmrc
