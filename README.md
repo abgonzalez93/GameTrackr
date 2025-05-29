@@ -1,6 +1,6 @@
-# 🎮 GameTrackr
+# 🎮 TrackPlay
 
-GameTrackr is a web application designed for tracking video games, built with a modern full-stack architecture using **Next.js**, **Express (TypeScript)**, **Docker**, and **NGINX**.
+TrackPlay is a web application designed for tracking video games, built with a modern full-stack architecture using **Next.js**, **Express (TypeScript)**, **Docker**, and **NGINX**.
 
 ---
 
@@ -28,5 +28,5 @@ GameTrackr is a web application designed for tracking video games, built with a 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/youruser/GameTrackr.git
-cd GameTrackr
+git clone https://github.com/youruser/TrackPlay.git
+cd TrackPlay
