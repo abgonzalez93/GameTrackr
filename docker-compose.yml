@@ -9,7 +9,6 @@ services:
       - WATCHPACK_POLLING=true
     volumes:
       - ./gametrackr-frontend:/app
-      - ./gametrackr-core/src:/core
     networks:
       - gametrackr-network
 
@@ -21,7 +20,6 @@ services:
       - ./gametrackr-backend/.env
     volumes:
       - ./gametrackr-backend:/app
-      - ./gametrackr-core/src:/core
     networks:
       - gametrackr-network
     extra_hosts:
