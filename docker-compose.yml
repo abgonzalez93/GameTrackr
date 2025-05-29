@@ -8,7 +8,7 @@ services:
     environment:
       - WATCHPACK_POLLING=true
     volumes:
-      - gametrackr-frontend:/app
+      - ./gametrackr-frontend:/app
     networks:
       - gametrackr-network
 
@@ -19,7 +19,7 @@ services:
     env_file:
       - ./gametrackr-backend/.env
     volumes:
-      - gametrackr-backend:/app
+      - ./gametrackr-backend:/app
     networks:
       - gametrackr-network
     extra_hosts:
@@ -58,8 +58,4 @@ networks:
   gametrackr-network:
 
 volumes:
-  gametrackr-frontend:
-    driver: local
-  gametrackr-backend:
-    driver: local
   pgdata:
