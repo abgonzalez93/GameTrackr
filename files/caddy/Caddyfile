@@ -1,0 +1,9 @@
+api.trackplay.localhost:443 {
+    tls /etc/caddy/certs/cert.crt /etc/caddy/certs/cert.key
+    reverse_proxy backend:80
+}
+
+trackplay.localhost:443 {
+    tls /etc/caddy/certs/cert.crt /etc/caddy/certs/cert.key
+    reverse_proxy frontend:3000
+}

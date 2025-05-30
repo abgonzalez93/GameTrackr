@@ -3,7 +3,7 @@ set -e
 
 echo "🟢 Paso 3: Generación de certificados SSL locales"
 
-CERT_DIR="./nginx/certs"
+CERT_DIR="./files/caddy/certs"
 CERT_NAME="cert.crt"
 KEY_NAME="cert.key"
 DOMAINS="trackplay.localhost api.trackplay.localhost"

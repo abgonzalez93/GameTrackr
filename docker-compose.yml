@@ -1,23 +1,23 @@
 services:
   frontend:
+    container_name: trackplay-frontend
     build:
       context: ./trackplay-frontend
-    container_name: trackplay-frontend
     env_file:
-      - ./trackplay-frontend/.env
+      - .env.frontend
     environment:
       - WATCHPACK_POLLING=true
     volumes:
-      - ./trackplay-frontend:/app
+      - trackplay-frontend:/app
     networks:
       - trackplay-network
 
   backend:
+    container_name: trackplay-backend
     build:
       context: ./trackplay-backend
-    container_name: trackplay-backend
     env_file:
-      - ./trackplay-backend/.env
+      - .env.backend
     volumes:
       - ./trackplay-backend:/app
     networks:
@@ -28,25 +28,27 @@ services:
       - database
 
   database:
-    image: postgres:latest
+    image: postgres:alpine
     container_name: trackplay-database
-    restart: always
     env_file:
-      - ./trackplay-backend/.env
+      - .env.database
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - trackplay-database:/var/lib/postgresql/data
     networks:
       - trackplay-network
+    restart: always
 
-  nginx:
-    image: nginx:latest
-    container_name: trackplay-nginx
+  reverse:
+    image: caddy:alpine
+    container_name: trackplay-reverse
     ports:
       - 80:80
       - 443:443
     volumes:
-      - ./nginx/conf:/etc/nginx/conf.d:ro
-      - ./nginx/certs:/etc/ssl/private:ro
+      - caddy_data:/data
+      - caddy_config:/config
+      - .files/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - .files/caddy/certs:/etc/caddy/certs
     depends_on:
       - frontend
       - backend
@@ -58,4 +60,13 @@ networks:
   trackplay-network:
 
 volumes:
-  pgdata:
+  trackplay-frontend:
+    driver: local
+  trackplay-backend:
+    driver: local
+  trackplay-database:
+    driver: local
+  caddy_data:
+    driver: local
+  caddy_config:
+    driver: local
