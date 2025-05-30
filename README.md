@@ -17,27 +17,6 @@ Asegúrate de tener instalado lo siguiente:
 
 ---
 
-## 🗂️ Estructura Esperada del Proyecto
-
-TrackPlay/
-├── scripts/
-│   ├── install-node-wsl.sh
-│   ├── install-mkcert.sh
-│   ├── generate-local-cert.sh
-│   └── setup.sh
-├── .env-template
-├── .npmrc-template
-├── nginx/
-│   ├── certs/
-│   └── conf/
-│       ├── api.trackplay.conf
-│       └── trackplay.conf
-├── trackplay-frontend/
-├── trackplay-backend/
-└── trackplay-core/
-
----
-
 ## 🔄 Configuración Automática
 
 El script principal `scripts/setup.sh` se encarga de:
