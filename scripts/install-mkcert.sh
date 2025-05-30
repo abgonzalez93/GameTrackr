@@ -1,11 +1,14 @@
 #!/bin/bash
-
-# scripts/install-mkcert.sh
-# Instala mkcert en Linux/WSL desde fuente oficial
-
 set -e
 
-echo "🛠 Instalando dependencias necesarias..."
+echo "🟢 Paso 2: Instalación de mkcert"
+
+if command -v mkcert &> /dev/null; then
+  echo "✔️ mkcert ya está instalado: $(mkcert --version)"
+  exit 0
+fi
+
+echo "🛠 Instalando dependencias..."
 sudo apt update
 sudo apt install -y libnss3-tools ca-certificates curl
 
@@ -16,10 +19,7 @@ echo "📦 Instalando mkcert en /usr/local/bin..."
 chmod +x mkcert-v*-linux-amd64
 sudo mv mkcert-v*-linux-amd64 /usr/local/bin/mkcert
 
-echo "✅ Verificando instalación..."
-mkcert --version
-
-echo "🔐 Instalando CA local (solo la primera vez)..."
+echo "✅ mkcert instalado: $(mkcert --version)"
+echo "🔐 Instalando CA local..."
 mkcert -install
-
-echo "🎉 mkcert instalado correctamente y listo para generar certificados."
+echo "🎉 mkcert listo para usar."

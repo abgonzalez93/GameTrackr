@@ -1,32 +1,82 @@
-# 🎮 TrackPlay
+# 🚀 TrackPlay - Setup del Entorno de Desarrollo
 
-TrackPlay is a web application designed for tracking video games, built with a modern full-stack architecture using **Next.js**, **Express (TypeScript)**, **Docker**, and **NGINX**.
-
----
-
-## 🧱 Main Technologies
-
-- **Frontend:** Next.js 15 (App Router) + TailwindCSS
-- **Backend:** Express 5 with TypeScript
-- **Authentication:** Auth.js (NextAuth)
-- **Database:** PostgreSQL (coming soon)
-- **Infrastructure:** Docker + NGINX as reverse proxy
-- **Development:** Docker Compose
+Este repositorio contiene todos los scripts necesarios para configurar de forma automática y reproducible el entorno local de desarrollo para TrackPlay, incluyendo frontend, backend, core compartido, certificados locales y configuración de entorno.
 
 ---
 
-## 🚀 Local Setup (Development)
+## 📦 Requisitos Previos
 
-### Requirements
+Asegúrate de tener instalado lo siguiente:
 
-- [Docker](https://www.docker.com/)
-- [Docker Compose](https://docs.docker.com/compose/)
-- (optional) [VS Code](https://code.visualstudio.com/)
+### 🔧 Herramientas del sistema
 
-### Steps
+| Herramienta                 | Requerida                  | Instrucciones de instalación                                             |
+| --------------------------- | -------------------------- | ------------------------------------------------------------------------ |
+| **WSL (Ubuntu)**            | ✅                         | [Instalar WSL en Windows](https://learn.microsoft.com/es-es/windows/wsl/install)    |
+| **Docker + Docker Compose** | ✅                         | [Instalar Docker en Windows](https://docs.docker.com/desktop/setup/install/windows-install/) |
 
-1. Clone the repository:
+---
+
+## 🗂️ Estructura Esperada del Proyecto
+
+TrackPlay/
+├── scripts/
+│   ├── install-node-wsl.sh
+│   ├── install-mkcert.sh
+│   ├── generate-local-cert.sh
+│   └── setup.sh
+├── .env-template
+├── .npmrc-template
+├── nginx/
+│   ├── certs/
+│   └── conf/
+│       ├── api.trackplay.conf
+│       └── trackplay.conf
+├── trackplay-frontend/
+├── trackplay-backend/
+└── trackplay-core/
+
+---
+
+## 🔄 Configuración Automática
+
+El script principal `scripts/setup.sh` se encarga de:
+
+1. Instalar Node.js y herramientas globales.
+2. Instalar `mkcert` y preparar certificados locales.
+3. Generar certificados para dominios locales `trackplay.localhost` y `api.trackplay.localhost`.
+4. Clonar los tres repositorios necesarios:
+   - `trackplay-frontend`
+   - `trackplay-backend`
+   - `trackplay-core`
+5. Copiar archivos `.env` y `.npmrc` desde sus plantillas.
+
+---
+
+## ▶️ Pasos para Ejecutar el Setup
+
+1. **Clona este repositorio raíz** en tu carpeta de trabajo:
 
 ```bash
-git clone https://github.com/youruser/TrackPlay.git
+git clone https://github.com/abgonzalez93/TrackPlay.git
 cd TrackPlay
+chmod +x scripts/*.sh
+bash scripts/setup.sh
+```
+
+2. **Copia manualmente los archivos de entorno** para cada subproyecto:
+
+```bash
+cp .env-template trackplay-backend/.env
+cp .npmrc-template trackplay-backend/.npmrc
+cp .env-template trackplay-frontend/.env
+cp .npmrc-template trackplay-frontend/.npmrc
+cp .env-template trackplay-core/.env
+cp .npmrc-template trackplay-core/.npmrc
+```
+
+3. **Levanta el entorno completo con Docker:**
+
+```bash
+docker compose up --build
+```
