@@ -33,7 +33,6 @@ REPOS=(
   "trackplay-core|https://github.com/abgonzalez93/TrackPlay-Core"
 )
 
-
 for entry in "${REPOS[@]}"; do
   IFS="|" read -r dir url <<< "$entry"
 
@@ -43,6 +42,16 @@ for entry in "${REPOS[@]}"; do
 
   echo "→ Clonando rama develop de $url dentro de $dir..."
   git clone -b develop "$url" "$dir"
+
+  if [[ -f "$dir/package.json" ]]; then
+    echo "📦 Instalando dependencias en $dir..."
+    cd "$dir"
+    npm install --silent
+    echo "   ✔️ node: $(node -v) | npm: $(npm -v) | Paquetes: $(ls node_modules | wc -l)"
+    cd ..
+  else
+    echo "ℹ️ No se encontró package.json en $dir, omitiendo npm install"
+  fi
 done
 
 echo ""
