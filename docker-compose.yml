@@ -1,5 +1,5 @@
 services:
-  frontend:
+  trackplay-frontend:
     container_name: trackplay-frontend
     build:
       context: ./trackplay-frontend
@@ -10,7 +10,7 @@ services:
     networks:
       - trackplay-network
 
-  backend:
+  trackplay-backend:
     container_name: trackplay-backend
     build:
       context: ./trackplay-backend
@@ -21,11 +21,11 @@ services:
     networks:
       - trackplay-network
     extra_hosts:
-      - "host.docker.internal:host-gateway"
+      - host.docker.internal:host-gateway
     depends_on:
-      - database
+      - trackplay-database
 
-  database:
+  trackplay-database:
     image: postgres:alpine
     container_name: trackplay-database
     env_file:
@@ -36,7 +36,7 @@ services:
       - trackplay-network
     restart: always
 
-  reverse:
+  trackplay-reverse:
     image: caddy:alpine
     container_name: trackplay-reverse
     ports:
@@ -47,16 +47,12 @@ services:
       - caddy_config:/config
       - ./.files/caddy/Caddyfile:/etc/caddy/Caddyfile
       - ./.files/caddy/certs:/etc/caddy/certs
-    depends_on:
-      - frontend
-      - backend
     networks:
       - trackplay-network
     restart: unless-stopped
 
 networks:
   trackplay-network:
-    driver: bridge
 
 volumes:
   trackplay-database:
