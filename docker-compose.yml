@@ -3,12 +3,10 @@ services:
     container_name: trackplay-frontend
     build:
       context: ./trackplay-frontend
-    env_file:
-      - .env.frontend
     environment:
       - WATCHPACK_POLLING=true
     volumes:
-      - trackplay-frontend:/app
+      - ./trackplay-frontend:/app
     networks:
       - trackplay-network
 
@@ -47,8 +45,8 @@ services:
     volumes:
       - caddy_data:/data
       - caddy_config:/config
-      - .files/caddy/Caddyfile:/etc/caddy/Caddyfile
-      - .files/caddy/certs:/etc/caddy/certs
+      - ./.files/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./.files/caddy/certs:/etc/caddy/certs
     depends_on:
       - frontend
       - backend
@@ -58,12 +56,9 @@ services:
 
 networks:
   trackplay-network:
+    driver: bridge
 
 volumes:
-  trackplay-frontend:
-    driver: local
-  trackplay-backend:
-    driver: local
   trackplay-database:
     driver: local
   caddy_data:

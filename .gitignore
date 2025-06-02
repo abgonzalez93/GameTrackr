@@ -25,7 +25,7 @@ Thumbs.db
 **/.eslintcache
 
 # Certificates
-files/certs/
+.files/caddy/certs/
 **/cert.key
 **/cert.crt
 
