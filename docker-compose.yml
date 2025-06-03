@@ -27,6 +27,19 @@ services:
     depends_on:
       - trackplay-database
 
+  trackplay-igdb:
+    container_name: trackplay-igdb
+    build:
+      context: ./trackplay-igdb
+    env_file:
+      - .env.igdb
+    volumes:
+      - ./trackplay-igdb/src:/app/src
+    networks:
+      - trackplay-network
+    extra_hosts:
+      - host.docker.internal:host-gateway
+
   trackplay-database:
     image: postgres:alpine
     container_name: trackplay-database
