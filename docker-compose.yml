@@ -6,7 +6,8 @@ services:
     environment:
       - WATCHPACK_POLLING=true
     volumes:
-      - ./trackplay-frontend:/app
+      - ./trackplay-frontend/public:/app/public
+      - ./trackplay-frontend/src:/app/src
     networks:
       - trackplay-network
 
@@ -17,7 +18,8 @@ services:
     env_file:
       - .env.backend
     volumes:
-      - ./trackplay-backend:/app
+      - ./trackplay-backend/prisma:/app/prisma
+      - ./trackplay-backend/src:/app/src
     networks:
       - trackplay-network
     extra_hosts:

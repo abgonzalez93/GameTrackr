@@ -50,9 +50,6 @@ echo "✅ Setup completo. Ya puedes levantar tu entorno con 'docker compose up -
 # --- Recordatorio de archivos de entorno ---
 echo ""
 echo "⚠️  Que no se te olvide copiar de forma manual los archivos de entorno:"
-echo "    cp .env-template trackplay-backend/.env"
 echo "    cp .npmrc-template trackplay-backend/.npmrc"
-echo "    cp .env-template trackplay-frontend/.env"
 echo "    cp .npmrc-template trackplay-frontend/.npmrc"
-echo "    cp .env-template trackplay-core/.env"
 echo "    cp .npmrc-template trackplay-core/.npmrc"

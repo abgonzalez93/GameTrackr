@@ -10,10 +10,10 @@ Asegúrate de tener instalado lo siguiente:
 
 ### 🔧 Herramientas del sistema
 
-| Herramienta                 | Requerida                  | Instrucciones de instalación                                             |
-| --------------------------- | -------------------------- | ------------------------------------------------------------------------ |
-| **WSL (Ubuntu)**            | ✅                         | [Instalar WSL en Windows](https://learn.microsoft.com/es-es/windows/wsl/install)    |
-| **Docker + Docker Compose** | ✅                         | [Instalar Docker en Windows](https://docs.docker.com/desktop/setup/install/windows-install/) |
+| Herramienta                 | Requerida | Instrucciones de instalación                                                                 |
+| --------------------------- | --------- | -------------------------------------------------------------------------------------------- |
+| **WSL (Ubuntu)**            | ✅        | [Instalar WSL en Windows](https://learn.microsoft.com/es-es/windows/wsl/install)             |
+| **Docker + Docker Compose** | ✅        | [Instalar Docker en Windows](https://docs.docker.com/desktop/setup/install/windows-install/) |
 
 ---
 
@@ -46,11 +46,8 @@ bash scripts/setup.sh
 2. **Copia manualmente los archivos de entorno** para cada subproyecto:
 
 ```bash
-cp .env-template trackplay-backend/.env
 cp .npmrc-template trackplay-backend/.npmrc
-cp .env-template trackplay-frontend/.env
 cp .npmrc-template trackplay-frontend/.npmrc
-cp .env-template trackplay-core/.env
 cp .npmrc-template trackplay-core/.npmrc
 ```
 
