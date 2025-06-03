@@ -20,11 +20,7 @@ RUN apt-get update -y && \
 COPY tsconfig.json ./
 
 # Copia sólo el código fuente y prisma
-COPY prisma ./prisma
 COPY src ./src
-
-# Genera Prisma
-RUN npm run prisma:generate
 
 # Comando de arranque en desarrollo
 CMD ["npm", "run", "dev"]
