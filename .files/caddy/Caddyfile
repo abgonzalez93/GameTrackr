@@ -1,21 +1,9 @@
 api.trackplay.localhost:443 {
     tls /etc/caddy/certs/cert.crt /etc/caddy/certs/cert.key
-    reverse_proxy trackplay-backend:80 {
-        header_up Host {http.request.host}
-        header_up X-Real-IP {http.request.remote}
-        header_up X-Forwarded-For {http.request.remote}
-        header_up X-Forwarded-Proto {http.request.scheme}
-        header_up X-Forwarded-Port {http.request.port}
-    }
+    reverse_proxy trackplay-backend:80
 }
 
 trackplay.localhost:443 {
     tls /etc/caddy/certs/cert.crt /etc/caddy/certs/cert.key
-    reverse_proxy trackplay-frontend:3000 {
-        header_up Host {http.request.host}
-        header_up X-Real-IP {http.request.remote}
-        header_up X-Forwarded-For {http.request.remote}
-        header_up X-Forwarded-Proto {http.request.scheme}
-        header_up X-Forwarded-Port {http.request.port}
-    }
+    reverse_proxy trackplay-frontend:3000
 }
