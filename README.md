@@ -47,8 +47,9 @@ bash scripts/setup.sh
 
 ```bash
 cp .npmrc-template trackplay-backend/.npmrc
-cp .npmrc-template trackplay-frontend/.npmrc
 cp .npmrc-template trackplay-core/.npmrc
+cp .npmrc-template trackplay-frontend/.npmrc
+cp .npmrc-template trackplay-igdb/.npmrc
 ```
 
 3. **Levanta el entorno completo con Docker:**
