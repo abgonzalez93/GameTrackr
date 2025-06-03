@@ -1,0 +1,20 @@
+{
+  "directory": [
+    "./src/config",
+    "./src/constants",
+    "./src/controllers",
+    "./src/logger",
+    "./src/middlewares",
+    "./src/repositories",
+    "./src/routes",
+    "./src/services",
+    "./src/utils"
+  ],
+  "name": "index.ts",
+  "structure": "flat",
+  "location": "all",
+  "delete": true,
+  "singleQuotes": true,
+  "noHeader": true,
+  "noSemicolon": true
+}

@@ -1,0 +1,44 @@
+{
+  "type": "module",
+  "name": "@trackplay/igdb",
+  "author": "Antonio Bueno Gonzalez",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc && tsc-alias",
+    "dev": "tsx watch --clear-screen=false -r tsconfig-paths/register src/server.ts",
+    "start": "node dist/server.js",
+    "lint:fix": "eslint src --fix",
+    "barrelsby:generate": "barrelsby --config .barrelsby.json",
+    "madge": "madge --circular src/"
+  },
+  "dependencies": {
+    "@trackplay/core": "^1.0.6",
+    "compression": "^1.8.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.1.0",
+    "winston": "^3.17.0",
+    "zod": "^3.25.49"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.28.0",
+    "@types/compression": "^1.8.0",
+    "@types/cors": "^2.8.18",
+    "@types/express": "^5.0.2",
+    "@types/node": "^22.15.29",
+    "barrelsby": "^2.8.1",
+    "eslint": "^9.28.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.1",
+    "globals": "^16.2.0",
+    "madge": "^8.0.0",
+    "prettier": "^3.5.3",
+    "tsc-alias": "^1.8.16",
+    "tsconfig-paths": "^4.2.0",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.33.1"
+  }
+}

@@ -1,0 +1,31 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Git
+.git
+.gitignore
+
+# Docker
+.dockerignore
+Dockerfile
+
+# Config
+README.md
+LICENSE
+components.json
+
+# Editor config
+.vscode/
+.idea/
+
+# Build output / TypeScript artifacts
+dist/
+*.tsbuildinfo
+
+# Misc
+*.md
+*.env*

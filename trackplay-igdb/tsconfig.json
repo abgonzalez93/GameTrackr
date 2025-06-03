@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "types": ["compression", "cors", "express", "node"],
+    "target": "ES2024",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": "./src",
+    "paths": {
+      "@config/*": ["config/*"],
+      "@constants/*": ["constants/*"],
+      "@controllers/*": ["controllers/*"],
+      "@logger/*": ["logger/*"],
+      "@middlewares/*": ["middlewares/*"],
+      "@repositories/*": ["repositories/*"],
+      "@routes/*": ["routes/*"],
+      "@services/*": ["services/*"],
+      "@utils/*": ["utils/*"]
+    },
+    "strict": true,
+    "noEmit": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strictNullChecks": true,
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": false,
+    "experimentalDecorators": false
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
