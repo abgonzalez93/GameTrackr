@@ -10,3 +10,7 @@
 	path = trackplay-core
 	url = https://github.com/abgonzalez93/TrackPlay-Core.git
 	branch = develop
+[submodule "trackplay-igdb"]
+	path = trackplay-igdb
+	url = https://github.com/abgonzalez93/TrackPlay-IGDB.git
+	branch = develop
