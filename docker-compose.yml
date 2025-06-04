@@ -10,8 +10,6 @@ services:
       - ./trackplay-frontend/src:/app/src
     networks:
       - trackplay-network
-    extra_hosts:
-      - api.trackplay.localhost:host-gateway
 
   trackplay-backend:
     container_name: trackplay-backend
@@ -24,8 +22,6 @@ services:
       - ./trackplay-backend/src:/app/src
     networks:
       - trackplay-network
-    extra_hosts:
-      - igdb.trackplay.localhost:host-gateway
     depends_on:
       - trackplay-database
 
