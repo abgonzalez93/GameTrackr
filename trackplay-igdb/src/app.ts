@@ -1,5 +1,6 @@
-import { middlewares, errorHandler } from '@middlewares/index'
+import { applyMiddlewares, errorHandler } from '@trackplay/core/middlewares'
 import { routes } from '@routes/index'
+import { config } from '@config/index'
 import express from 'express'
 
 /**
@@ -9,7 +10,13 @@ import express from 'express'
  */
 const app = express()
 
-middlewares(app)
+applyMiddlewares(app, {
+  cors: {
+    origin: config.CORS_ORIGINS.split(','),
+    credentials: true,
+  },
+})
+
 routes(app)
 app.use(errorHandler)
 

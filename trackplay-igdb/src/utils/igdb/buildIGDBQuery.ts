@@ -1,5 +1,5 @@
 import { IGDBGameFilters } from '@trackplay/core/schemas'
-import { IGDB } from '@constants/index'
+import { IGDB } from '@trackplay/core/constants'
 
 type BuildQueryOptions = IGDBGameFilters & {
   where?: string

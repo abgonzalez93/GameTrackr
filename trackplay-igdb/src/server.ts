@@ -1,6 +1,6 @@
-import { getBaseURL } from '@utils/index'
-import { logger } from '@logger/index'
-import { APP } from '@constants/index'
+import { getBaseURL } from '@trackplay/core/utils'
+import { logger } from '@trackplay/core/logger'
+import { config } from '@config/index'
 import app from './app'
 
 /**
@@ -9,6 +9,6 @@ import app from './app'
  *
  * @module server
  */
-app.listen(APP.PORT, APP.HOST, () => {
+app.listen(config.PORT, config.HOST, () => {
   logger.info(`🚀 Server running at ${getBaseURL()}`)
 })

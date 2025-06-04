@@ -13,7 +13,7 @@
     "madge": "madge --circular src/"
   },
   "dependencies": {
-    "@trackplay/core": "^1.0.6",
+    "@trackplay/core": "^1.0.8",
     "compression": "^1.8.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",

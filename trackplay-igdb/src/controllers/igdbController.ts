@@ -1,4 +1,4 @@
-import { IGDBGameFiltersSchema, IGDBGameFilters } from '@trackplay/core/schemas'
+import { IGDBGameFiltersSchema, IGDBGameFilters, IGDBGame } from '@trackplay/core/schemas'
 import { assertValid, assertExists } from '@trackplay/core/utils'
 import { igdbService } from '@services/index'
 import { Request, Response } from 'express'
@@ -32,7 +32,7 @@ export const igdbController = {
   getByIgdbId: async (req: Request, res: Response): Promise<void> => {
     const igdbId = Number(req.params.id)
     const game = await igdbService.getGameById(igdbId)
-    assertExists(game, 'Game not found')
+    assertExists<IGDBGame>(game, 'Game not found')
     res.json(game)
   },
 }

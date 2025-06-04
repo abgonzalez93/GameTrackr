@@ -1,9 +1,9 @@
 import { IGDBGameSchema, IGDBGame, IGDBGameFilters, IGDBToken, IGDBTokenSchema } from '@trackplay/core/schemas'
-import { assertExists, assertValid, extractErrorMessage } from '@trackplay/core/utils'
-import { apiFetch, buildIGDBQuery, postToIGDB } from '@utils/index'
-import { HTTP_STATUS } from '@trackplay/core/constants'
+import { apiFetch, assertExists, assertValid } from '@trackplay/core/utils'
+import { HTTP_STATUS, IGDB } from '@trackplay/core/constants'
+import { buildIGDBQuery, postToIGDB } from '@utils/index'
 import { ApiError } from '@trackplay/core/errors'
-import { IGDB } from '@constants/index'
+import { config } from '@config/index'
 
 let accessToken: string | null = null
 let tokenExpiresAt: number | null = null
@@ -29,8 +29,8 @@ export const igdbService = {
     }
 
     const params = new URLSearchParams({
-      client_id: IGDB.CLIENT_ID,
-      client_secret: IGDB.CLIENT_SECRET,
+      client_id: config.IGDB_CLIENT_ID,
+      client_secret: config.IGDB_CLIENT_SECRET,
       grant_type: 'client_credentials',
     })
 
@@ -42,15 +42,14 @@ export const igdbService = {
         },
       })
 
-      const token = assertValid(IGDBTokenSchema, data, 'Invalid IGDB token response')
+      const token = assertValid<IGDBToken>(IGDBTokenSchema, data, 'Invalid IGDB token response')
 
       accessToken = token.access_token
       tokenExpiresAt = now + data.expires_in * 1000
 
       return accessToken
     } catch (error: unknown) {
-      const message = extractErrorMessage(error)
-      throw new ApiError(`IGDB authentication failed: ${message}`, HTTP_STATUS.UNAUTHORIZED)
+      throw new ApiError('IGDB authentication failed', HTTP_STATUS.UNAUTHORIZED, error)
     }
   },
 
@@ -71,10 +70,9 @@ export const igdbService = {
       const query = buildIGDBQuery(filters)
       const games = await postToIGDB<IGDBGame[]>(query, token)
 
-      return assertValid(IGDBGameSchema.array(), games, 'Invalid IGDB response')
+      return assertValid<IGDBGame[]>(IGDBGameSchema.array(), games, 'Invalid IGDB response')
     } catch (error: unknown) {
-      const message = extractErrorMessage(error)
-      throw new ApiError(`Error searching games. ${message}`, HTTP_STATUS.BAD_GATEWAY)
+      throw new ApiError('Error searching games', HTTP_STATUS.BAD_GATEWAY, error)
     }
   },
 
@@ -94,12 +92,11 @@ export const igdbService = {
       const query = buildIGDBQuery({ where: `id = ${igdbId}`, limit: 1 })
       const games = await postToIGDB<IGDBGame[]>(query, token)
 
-      const game = assertExists(games?.[0], `Game with ID ${igdbId} not found`)
+      const game = assertExists<IGDBGame>(games?.[0], `Game with ID ${igdbId} not found`)
 
-      return assertValid(IGDBGameSchema, game, 'Invalid game structure')
+      return assertValid<IGDBGame>(IGDBGameSchema, game, 'Invalid game structure')
     } catch (error: unknown) {
-      const message = extractErrorMessage(error)
-      throw new ApiError(`Error fetching game by ID: ${message}`, HTTP_STATUS.BAD_GATEWAY)
+      throw new ApiError('Error fetching game by ID', HTTP_STATUS.BAD_GATEWAY, error)
     }
   },
 }
