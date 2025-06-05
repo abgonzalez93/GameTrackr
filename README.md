@@ -24,11 +24,12 @@ El script principal `scripts/setup.sh` se encarga de:
 1. Instalar Node.js y herramientas globales.
 2. Instalar `mkcert` y preparar certificados locales.
 3. Generar certificados para dominios locales `trackplay.localhost` y `api.trackplay.localhost`.
-4. Clonar los tres repositorios necesarios:
+4. Clonar los cuatro repositorios necesarios:
    - `trackplay-frontend`
    - `trackplay-backend`
    - `trackplay-core`
-5. Copiar archivos `.env` y `.npmrc` desde sus plantillas.
+   - `trackplay-igdb`
+5. Copiar archivo `.npmrc` desde sus plantillas.
 
 ---
 

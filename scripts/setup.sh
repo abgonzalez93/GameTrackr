@@ -37,9 +37,9 @@ REPOS=(
 for entry in "${REPOS[@]}"; do
   IFS="|" read -r dir url <<< "$entry"
 
-  echo "→ Preparando directorio ./$dir"
+  echo "→ Eliminando y recreando directorio ./$dir"
+  rm -rf "$dir"
   mkdir -p "$dir"
-  rm -rf "$dir/"* "$dir/".* 2>/dev/null || true
 
   echo "→ Clonando rama develop de $url dentro de $dir..."
   git clone -b develop "$url" "$dir"
