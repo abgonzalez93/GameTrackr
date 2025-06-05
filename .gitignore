@@ -41,3 +41,9 @@ Thumbs.db
 
 #npm
 .npmrc
+
+# Repositories
+/trackplay-core/
+/trackplay-backend/
+/trackplay-frontend/
+/trackplay-igdb/
