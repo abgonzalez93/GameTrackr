@@ -10,6 +10,8 @@ services:
       - ./trackplay-frontend/src:/app/src
     networks:
       - trackplay-network
+    depends_on:
+      - trackplay-backend
 
   trackplay-backend:
     container_name: trackplay-backend
@@ -24,6 +26,8 @@ services:
       - trackplay-network
     depends_on:
       - trackplay-database
+      - trackplay-auth
+      - trackplay-igdb
 
   trackplay-igdb:
     container_name: trackplay-igdb
@@ -33,6 +37,17 @@ services:
       - .env.igdb
     volumes:
       - ./trackplay-igdb/src:/app/src
+    networks:
+      - trackplay-network
+
+  trackplay-auth:
+    container_name: trackplay-auth
+    build:
+      context: ./trackplay-auth
+    env_file:
+      - .env.auth
+    volumes:
+      - ./trackplay-auth/src:/app/src
     networks:
       - trackplay-network
 

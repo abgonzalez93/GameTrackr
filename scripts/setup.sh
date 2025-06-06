@@ -32,6 +32,7 @@ REPOS=(
   "trackplay-core|https://github.com/abgonzalez93/TrackPlay-Core"
   "trackplay-frontend|https://github.com/abgonzalez93/TrackPlay-Frontend"
   "trackplay-igdb|https://github.com/abgonzalez93/TrackPlay-IGDB"
+  "trackplay-auth|https://github.com/abgonzalez93/TrackPlay-Auth"
 )
 
 for entry in "${REPOS[@]}"; do
@@ -55,3 +56,4 @@ echo "    cp .npmrc-template trackplay-backend/.npmrc"
 echo "    cp .npmrc-template trackplay-core/.npmrc"
 echo "    cp .npmrc-template trackplay-frontend/.npmrc"
 echo "    cp .npmrc-template trackplay-igdb/.npmrc"
+echo "    cp .npmrc-template trackplay-auth/.npmrc"
