@@ -1,9 +1,9 @@
-api.trackplay.localhost {
+api.trackplay.internal {
     tls /etc/caddy/certs/cert.crt /etc/caddy/certs/cert.key
     reverse_proxy trackplay-backend:80
 }
 
-trackplay.localhost {
+trackplay.internal {
     tls /etc/caddy/certs/cert.crt /etc/caddy/certs/cert.key
     reverse_proxy trackplay-frontend:3000
 }

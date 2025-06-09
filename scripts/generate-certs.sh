@@ -6,7 +6,7 @@ echo "🟢 Paso 3: Generación de certificados SSL locales"
 CERT_DIR="./.files/caddy/certs"
 CERT_NAME="cert.crt"
 KEY_NAME="cert.key"
-DOMAINS="trackplay.localhost api.trackplay.localhost"
+DOMAINS="trackplay.internal api.trackplay.internal"
 
 mkdir -p "$CERT_DIR"
 

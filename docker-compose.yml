@@ -3,6 +3,8 @@ services:
     container_name: trackplay-frontend
     build:
       context: ./trackplay-frontend
+    env_file:
+      - .env.frontend
     environment:
       - WATCHPACK_POLLING=true
     volumes:
