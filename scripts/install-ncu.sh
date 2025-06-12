@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "🟢 Paso 1.2: Instalación de npm-check-updates (ncu)"
+echo "🟢 Paso 3: Instalación de npm-check-updates"
 
 if command -v ncu &> /dev/null; then
   echo "✔️ ncu ya está instalado: $(ncu --version)"

@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "🟢 Paso 1.1: Instalación de Git"
+echo "🟢 Paso 1: Instalación de Git"
 
 if command -v git &> /dev/null; then
   echo "✔️ Git ya está instalado: $(git --version)"

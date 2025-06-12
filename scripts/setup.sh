@@ -24,8 +24,12 @@ bash ./scripts/install-mkcert.sh
 echo "🟢 Paso 5: Generación de certificados SSL locales"
 bash ./scripts/generate-certs.sh
 
+# --- Claves RSA para JWT ---
+echo "🟢 Paso 6: Generación de claves RSA para JWT (RS256)"
+bash ./scripts/generate-jwt-keys.sh
+
 # --- Clonado de repositorios ---
-echo "🟢 Paso 6: Clonado de repositorios"
+echo "🟢 Paso 7: Clonado de repositorios"
 
 REPOS=(
   "trackplay-backend|https://github.com/abgonzalez93/TrackPlay-Backend"

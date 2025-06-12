@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "🟢 Paso 3: Generación de certificados SSL locales"
+echo "🟢 Paso 5: Generación de certificados SSL locales"
 
 CERT_DIR="./.files/caddy/certs"
 CERT_NAME="cert.crt"

@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "🟢 Paso 2: Instalación de mkcert"
+echo "🟢 Paso 4: Instalación de mkcert"
 
 if command -v mkcert &> /dev/null; then
   echo "✔️ mkcert ya está instalado: $(mkcert --version)"

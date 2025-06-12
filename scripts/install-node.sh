@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "🟢 Paso 1: Instalación de Node.js"
+echo "🟢 Paso 2: Instalación de Node.js"
 
 export NVM_DIR="$HOME/.nvm"
 if [ -s "$NVM_DIR/nvm.sh" ]; then

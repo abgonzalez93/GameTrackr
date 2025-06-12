@@ -29,6 +29,11 @@ Thumbs.db
 **/cert.key
 **/cert.crt
 
+# JWT RSA Keys
+.files/jwt/
+**/private.key
+**/public.key
+
 # Docker
 **/docker-compose.override.yml
 **/docker-volume-data/

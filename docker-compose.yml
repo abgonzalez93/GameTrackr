@@ -24,6 +24,7 @@ services:
     volumes:
       - ./trackplay-backend/prisma:/app/prisma
       - ./trackplay-backend/src:/app/src
+      - ./.files/jwt/public.key:/app/.files/jwt/public.key:ro
     networks:
       - trackplay-network
     depends_on:
@@ -50,8 +51,12 @@ services:
       - .env.auth
     volumes:
       - ./trackplay-auth/src:/app/src
+      - ./.files/jwt/private.key:/app/.files/jwt/private.key:ro
     networks:
       - trackplay-network
+      - trackplay-auth-network
+    depends_on:
+      - trackplay-redis
 
   trackplay-database:
     image: postgres:alpine
@@ -64,6 +69,18 @@ services:
       - trackplay-network
     restart: always
 
+  trackplay-redis:
+    image: redis:alpine
+    container_name: trackplay-redis
+    env_file:
+      - .env.redis
+    command: sh -c "redis-server --bind $$HOST --requirepass $$REDIS_PASSWORD --save '' --appendonly no"
+    volumes:
+      - trackplay-redis:/data
+    networks:
+      - trackplay-auth-network
+    restart: unless-stopped
+
   trackplay-reverse:
     image: caddy:alpine
     container_name: trackplay-reverse
@@ -71,8 +88,8 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - caddy_data:/data
-      - caddy_config:/config
+      - trackplay-reverse:/data
+      - trackplay-reverse:/config
       - ./.files/caddy/Caddyfile:/etc/caddy/Caddyfile
       - ./.files/caddy/certs:/etc/caddy/certs
     networks:
@@ -81,11 +98,13 @@ services:
 
 networks:
   trackplay-network:
+  trackplay-auth-network:
+    internal: true
 
 volumes:
   trackplay-database:
     driver: local
-  caddy_data:
+  trackplay-redis:
     driver: local
-  caddy_config:
+  trackplay-reverse:
     driver: local
