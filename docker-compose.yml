@@ -11,7 +11,7 @@ services:
       - ./trackplay-frontend/public:/app/public
       - ./trackplay-frontend/src:/app/src
     networks:
-      - trackplay-network
+      - trackplay-public
     depends_on:
       - trackplay-backend
 
@@ -26,11 +26,23 @@ services:
       - ./trackplay-backend/src:/app/src
       - ./.files/jwt/public.key:/app/.files/jwt/public.key:ro
     networks:
-      - trackplay-network
+      - trackplay-public
+      - trackplay-backend-internal
     depends_on:
       - trackplay-database
       - trackplay-auth
       - trackplay-igdb
+
+  trackplay-database:
+    image: postgres:alpine
+    container_name: trackplay-database
+    env_file:
+      - .env.database
+    volumes:
+      - trackplay-database:/var/lib/postgresql/data
+    networks:
+      - trackplay-backend-internal
+    restart: always
 
   trackplay-igdb:
     container_name: trackplay-igdb
@@ -41,7 +53,7 @@ services:
     volumes:
       - ./trackplay-igdb/src:/app/src
     networks:
-      - trackplay-network
+      - trackplay-public
 
   trackplay-auth:
     container_name: trackplay-auth
@@ -53,21 +65,10 @@ services:
       - ./trackplay-auth/src:/app/src
       - ./.files/jwt/private.key:/app/.files/jwt/private.key:ro
     networks:
-      - trackplay-network
-      - trackplay-auth-network
+      - trackplay-backend-internal
+      - trackplay-auth-internal
     depends_on:
       - trackplay-redis
-
-  trackplay-database:
-    image: postgres:alpine
-    container_name: trackplay-database
-    env_file:
-      - .env.database
-    volumes:
-      - trackplay-database:/var/lib/postgresql/data
-    networks:
-      - trackplay-network
-    restart: always
 
   trackplay-redis:
     image: redis:alpine
@@ -78,7 +79,7 @@ services:
     volumes:
       - trackplay-redis:/data
     networks:
-      - trackplay-auth-network
+      - trackplay-auth-internal
     restart: unless-stopped
 
   trackplay-reverse:
@@ -93,12 +94,14 @@ services:
       - ./.files/caddy/Caddyfile:/etc/caddy/Caddyfile
       - ./.files/caddy/certs:/etc/caddy/certs
     networks:
-      - trackplay-network
+      - trackplay-public
     restart: unless-stopped
 
 networks:
-  trackplay-network:
-  trackplay-auth-network:
+  trackplay-public:
+  trackplay-backend-internal:
+    internal: true
+  trackplay-auth-internal:
     internal: true
 
 volumes:
