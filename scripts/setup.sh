@@ -32,11 +32,12 @@ bash ./scripts/generate-jwt-keys.sh
 echo "🟢 Paso 7: Clonado de repositorios"
 
 REPOS=(
+  "trackplay-auth|https://github.com/abgonzalez93/TrackPlay-Auth"
   "trackplay-backend|https://github.com/abgonzalez93/TrackPlay-Backend"
   "trackplay-core|https://github.com/abgonzalez93/TrackPlay-Core"
   "trackplay-frontend|https://github.com/abgonzalez93/TrackPlay-Frontend"
   "trackplay-igdb|https://github.com/abgonzalez93/TrackPlay-IGDB"
-  "trackplay-auth|https://github.com/abgonzalez93/TrackPlay-Auth"
+  "trackplay-notifications|https://github.com/abgonzalez93/TrackPlay-Notifications"
 )
 
 for entry in "${REPOS[@]}"; do
@@ -56,8 +57,9 @@ echo "✅ Setup completo. Ya puedes levantar tu entorno con 'docker compose up -
 # --- Recordatorio de archivos de entorno ---
 echo ""
 echo "⚠️  Que no se te olvide copiar de forma manual los archivos de entorno:"
+echo "    cp .npmrc-template trackplay-auth/.npmrc"
 echo "    cp .npmrc-template trackplay-backend/.npmrc"
 echo "    cp .npmrc-template trackplay-core/.npmrc"
 echo "    cp .npmrc-template trackplay-frontend/.npmrc"
 echo "    cp .npmrc-template trackplay-igdb/.npmrc"
-echo "    cp .npmrc-template trackplay-auth/.npmrc"
+echo "    cp .npmrc-template trackplay-notifications/.npmrc"

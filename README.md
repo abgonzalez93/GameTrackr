@@ -25,11 +25,12 @@ El script principal `scripts/setup.sh` se encarga de:
 2. Instalar `mkcert` y preparar certificados locales.
 3. Generar certificados para dominios locales `trackplay.internal` y `api.trackplay.internal`.
 4. Clonar los cuatro repositorios necesarios:
+   - [trackplay-auth](https://github.com/abgonzalez93/TrackPlay-Auth)
    - [trackplay-backend](https://github.com/abgonzalez93/TrackPlay-Backend)
    - [trackplay-core](https://github.com/abgonzalez93/TrackPlay-Core)
    - [trackplay-frontend](https://github.com/abgonzalez93/TrackPlay-Frontend)
    - [trackplay-igdb](https://github.com/abgonzalez93/TrackPlay-IGDB)
-   - [trackplay-auth](https://github.com/abgonzalez93/TrackPlay-Auth)
+   - [trackplay-notifications](https://github.com/abgonzalez93/TrackPlay-Notifications)
 5. Copiar archivo `.npmrc` desde sus plantillas.
 
 ---

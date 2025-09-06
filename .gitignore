@@ -48,8 +48,9 @@ Thumbs.db
 .npmrc
 
 # Repositories
+/trackplay-auth/
 /trackplay-core/
 /trackplay-backend/
 /trackplay-frontend/
 /trackplay-igdb/
-/trackplay-auth/
+/trackplay-notifications/
