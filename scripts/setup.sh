@@ -12,24 +12,29 @@ bash ./scripts/install-git.sh
 echo "🟢 Paso 2: Instalación de Node.js"
 bash ./scripts/install-node.sh
 
+# --- pnpm (gestor de paquetes recomendado) ---
+echo "🟢 Paso 3: Instalación de pnpm"
+bash ./scripts/install-pnpm.sh
+
 # --- npm-check-updates (útil para desarrollo JS/TS) ---
-echo "🟢 Paso 3: Instalación de npm-check-updates"
+echo "🟢 Paso 4: Instalación de npm-check-updates"
 bash ./scripts/install-ncu.sh
 
 # --- mkcert (usado para certs locales) ---
-echo "🟢 Paso 4: Instalación de mkcert"
+echo "🟢 Paso 5: Instalación de mkcert"
 bash ./scripts/install-mkcert.sh
 
 # --- Certificados SSL locales ---
-echo "🟢 Paso 5: Generación de certificados SSL locales"
+echo "🟢 Paso 6: Generación de certificados SSL locales"
 bash ./scripts/generate-certs.sh
 
 # --- Claves RSA para JWT ---
-echo "🟢 Paso 6: Generación de claves RSA para JWT (RS256)"
+echo "🟢 Paso 7: Generación de claves RSA para JWT (RS256)"
 bash ./scripts/generate-jwt-keys.sh
 
 # --- Clonado de repositorios ---
-echo "🟢 Paso 7: Clonado de repositorios"
+echo "🟢 Paso 8: Clonado de repositorios"
+
 
 REPOS=(
   "trackplay-auth|https://github.com/abgonzalez93/TrackPlay-Auth"

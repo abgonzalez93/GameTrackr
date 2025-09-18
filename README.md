@@ -21,17 +21,19 @@ Asegúrate de tener instalado lo siguiente:
 
 El script principal `scripts/setup.sh` se encarga de:
 
-1. Instalar Node.js y herramientas globales.
-2. Instalar `mkcert` y preparar certificados locales.
-3. Generar certificados para dominios locales `trackplay.internal` y `api.trackplay.internal`.
-4. Clonar los cuatro repositorios necesarios:
+1. Instalar Git, Node.js y pnpm como gestor de paquetes.
+2. Instalar herramientas globales como npm-check-updates.
+3. Instalar mkcert y preparar certificados locales.
+4. Generar certificados para los dominios locales trackplay.internal y api.trackplay.internal.
+5. Generar claves RSA para la firma de JWT.
+6. Clonar los cuatro repositorios necesarios:
    - [trackplay-auth](https://github.com/abgonzalez93/TrackPlay-Auth)
    - [trackplay-backend](https://github.com/abgonzalez93/TrackPlay-Backend)
    - [trackplay-core](https://github.com/abgonzalez93/TrackPlay-Core)
    - [trackplay-frontend](https://github.com/abgonzalez93/TrackPlay-Frontend)
    - [trackplay-igdb](https://github.com/abgonzalez93/TrackPlay-IGDB)
    - [trackplay-notifications](https://github.com/abgonzalez93/TrackPlay-Notifications)
-5. Copiar archivo `.npmrc` desde sus plantillas.
+7. Copiar archivo `.npmrc` desde sus plantillas.
 
 ---
 

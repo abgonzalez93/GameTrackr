@@ -1,19 +1,18 @@
 services:
-  trackplay-frontend:
-    container_name: trackplay-frontend
+  trackplay-auth:
+    container_name: trackplay-auth
     build:
-      context: ./trackplay-frontend
+      context: ./trackplay-auth
     env_file:
-      - .env.frontend
-    environment:
-      - WATCHPACK_POLLING=true
+      - .env.auth
     volumes:
-      - ./trackplay-frontend/public:/app/public
-      - ./trackplay-frontend/src:/app/src
+      - ./trackplay-auth/src:/app/src
+      - ./.files/jwt/private.key:/app/.files/jwt/private.key:ro
     networks:
-      - trackplay-public
+      - trackplay-backend-internal
+      - trackplay-redis-internal
     depends_on:
-      - trackplay-backend
+      - trackplay-redis
 
   trackplay-backend:
     container_name: trackplay-backend
@@ -32,6 +31,22 @@ services:
       - trackplay-database
       - trackplay-auth
       - trackplay-igdb
+
+  trackplay-frontend:
+    container_name: trackplay-frontend
+    build:
+      context: ./trackplay-frontend
+    env_file:
+      - .env.frontend
+    environment:
+      - WATCHPACK_POLLING=true
+    volumes:
+      - ./trackplay-frontend/public:/app/public
+      - ./trackplay-frontend/src:/app/src
+    networks:
+      - trackplay-public
+    depends_on:
+      - trackplay-backend
 
   trackplay-database:
     image: postgres:alpine
@@ -54,21 +69,6 @@ services:
       - ./trackplay-igdb/src:/app/src
     networks:
       - trackplay-public
-
-  trackplay-auth:
-    container_name: trackplay-auth
-    build:
-      context: ./trackplay-auth
-    env_file:
-      - .env.auth
-    volumes:
-      - ./trackplay-auth/src:/app/src
-      - ./.files/jwt/private.key:/app/.files/jwt/private.key:ro
-    networks:
-      - trackplay-backend-internal
-      - trackplay-redis-internal
-    depends_on:
-      - trackplay-redis
 
   trackplay-notifications:
     container_name: trackplay-notifications
