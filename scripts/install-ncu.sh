@@ -7,6 +7,6 @@ if command -v ncu &> /dev/null; then
   echo "✔️ ncu ya está instalado: $(ncu --version)"
 else
   echo "⬇️ Instalando ncu globalmente..."
-  npm install -g npm-check-updates
+  pnpm install -g npm-check-updates
   echo "✅ ncu instalado: $(ncu --version)"
 fi
