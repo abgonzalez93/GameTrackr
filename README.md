@@ -27,12 +27,14 @@ El script principal `scripts/setup.sh` se encarga de:
 4. Generar certificados para los dominios locales trackplay.internal y api.trackplay.internal.
 5. Generar claves RSA para la firma de JWT.
 6. Clonar los cuatro repositorios necesarios:
+
    - [trackplay-auth](https://github.com/abgonzalez93/TrackPlay-Auth)
    - [trackplay-backend](https://github.com/abgonzalez93/TrackPlay-Backend)
+   - [trackplay-catalog](https://github.com/abgonzalez93/TrackPlay-Catalog)
    - [trackplay-core](https://github.com/abgonzalez93/TrackPlay-Core)
    - [trackplay-frontend](https://github.com/abgonzalez93/TrackPlay-Frontend)
-   - [trackplay-igdb](https://github.com/abgonzalez93/TrackPlay-IGDB)
    - [trackplay-notifications](https://github.com/abgonzalez93/TrackPlay-Notifications)
+
 7. Copiar archivo `.npmrc` desde sus plantillas.
 
 ---
@@ -50,11 +52,11 @@ bash scripts/setup.sh
 2. **Copia manualmente los archivos de entorno** para cada subproyecto:
 
 ```bash
+cp .npmrc-template trackplay-auth/.npmrc
 cp .npmrc-template trackplay-backend/.npmrc
+cp .npmrc-template trackplay-catalog/.npmrc
 cp .npmrc-template trackplay-core/.npmrc
 cp .npmrc-template trackplay-frontend/.npmrc
-cp .npmrc-template trackplay-igdb/.npmrc
-cp .npmrc-template trackplay-auth/.npmrc
 ```
 
 3. **Levanta el entorno completo con Docker:**

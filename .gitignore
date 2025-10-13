@@ -34,6 +34,9 @@ Thumbs.db
 **/private.key
 **/public.key
 
+# Secrets
+.secrets
+
 # Docker
 **/docker-compose.override.yml
 **/docker-volume-data/
@@ -49,8 +52,8 @@ Thumbs.db
 
 # Repositories
 /trackplay-auth/
-/trackplay-core/
 /trackplay-backend/
+/trackplay-catalog/
+/trackplay-core/
 /trackplay-frontend/
-/trackplay-igdb/
 /trackplay-notifications/

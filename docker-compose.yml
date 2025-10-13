@@ -30,7 +30,7 @@ services:
     depends_on:
       - trackplay-database
       - trackplay-auth
-      - trackplay-igdb
+      - trackplay-catalog
 
   trackplay-frontend:
     container_name: trackplay-frontend
@@ -59,14 +59,22 @@ services:
       - trackplay-backend-internal
     restart: always
 
-  trackplay-igdb:
-    container_name: trackplay-igdb
+  trackplay-catalog:
+    container_name: trackplay-catalog
     build:
-      context: ./trackplay-igdb
+      context: ./trackplay-catalog
     env_file:
-      - .env.igdb
+      - .env.catalog
+    environment:
+      IGDB_CLIENT_ID: /run/secrets/igdb_client_id
+      IGDB_CLIENT_SECRET: /run/secrets/igdb_client_secret
+      RAWG_API_KEY: /run/secrets/rawg_api_key
+    secrets:
+      - igdb_client_id
+      - igdb_client_secret
+      - rawg_api_key
     volumes:
-      - ./trackplay-igdb/src:/app/src
+      - ./trackplay-catalog/src:/app/src
     networks:
       - trackplay-public
 
@@ -125,3 +133,11 @@ volumes:
     driver: local
   trackplay-reverse:
     driver: local
+
+secrets:
+  igdb_client_id:
+    file: ./.secrets/catalog/igdb_client_id
+  igdb_client_secret:
+    file: ./.secrets/catalog/igdb_client_secret
+  rawg_api_key:
+    file: ./.secrets/catalog/rawg_api_key
