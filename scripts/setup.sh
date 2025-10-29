@@ -43,6 +43,7 @@ REPOS=(
   "trackplay-core|https://github.com/abgonzalez93/TrackPlay-Core"
   "trackplay-frontend|https://github.com/abgonzalez93/TrackPlay-Frontend"
   "trackplay-notifications|https://github.com/abgonzalez93/TrackPlay-Notifications"
+  "trackplay-runtime|https://github.com/abgonzalez93/TrackPlay-Runtime"
 )
 
 for entry in "${REPOS[@]}"; do
@@ -68,3 +69,4 @@ echo "    cp .npmrc-template trackplay-catalog/.npmrc"
 echo "    cp .npmrc-template trackplay-core/.npmrc"
 echo "    cp .npmrc-template trackplay-frontend/.npmrc"
 echo "    cp .npmrc-template trackplay-notifications/.npmrc"
+echo "    cp .npmrc-template trackplay-runtime/.npmrc"

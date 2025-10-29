@@ -65,10 +65,6 @@ services:
       context: ./trackplay-catalog
     env_file:
       - .env.catalog
-    environment:
-      IGDB_CLIENT_ID: /run/secrets/igdb_client_id
-      IGDB_CLIENT_SECRET: /run/secrets/igdb_client_secret
-      RAWG_API_KEY: /run/secrets/rawg_api_key
     secrets:
       - igdb_client_id
       - igdb_client_secret

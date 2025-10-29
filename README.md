@@ -34,6 +34,7 @@ El script principal `scripts/setup.sh` se encarga de:
    - [trackplay-core](https://github.com/abgonzalez93/TrackPlay-Core)
    - [trackplay-frontend](https://github.com/abgonzalez93/TrackPlay-Frontend)
    - [trackplay-notifications](https://github.com/abgonzalez93/TrackPlay-Notifications)
+   - [trackplay-runtime](https://github.com/abgonzalez93/TrackPlay-Runtime)
 
 7. Copiar archivo `.npmrc` desde sus plantillas.
 
@@ -57,6 +58,8 @@ cp .npmrc-template trackplay-backend/.npmrc
 cp .npmrc-template trackplay-catalog/.npmrc
 cp .npmrc-template trackplay-core/.npmrc
 cp .npmrc-template trackplay-frontend/.npmrc
+cp .npmrc-template trackplay-notifications/.npmrc
+cp .npmrc-template trackplay-runtime/.npmrc
 ```
 
 3. **Levanta el entorno completo con Docker:**
