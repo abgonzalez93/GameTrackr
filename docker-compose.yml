@@ -2,9 +2,10 @@ services:
   trackplay-auth:
     container_name: trackplay-auth
     build:
-      context: ./trackplay-auth
+      context: .
+      dockerfile: ./trackplay-auth/Dockerfile
     env_file:
-      - .env.auth
+      - ./trackplay-auth/.env
     volumes:
       - ./trackplay-auth/src:/app/src
       - ./.files/jwt/private.key:/app/.files/jwt/private.key:ro
@@ -17,9 +18,10 @@ services:
   trackplay-backend:
     container_name: trackplay-backend
     build:
-      context: ./trackplay-backend
+      context: .
+      dockerfile: ./trackplay-backend/Dockerfile
     env_file:
-      - .env.backend
+      - ./trackplay-backend/.env
     volumes:
       - ./trackplay-backend/prisma:/app/prisma
       - ./trackplay-backend/src:/app/src
@@ -35,9 +37,10 @@ services:
   trackplay-frontend:
     container_name: trackplay-frontend
     build:
-      context: ./trackplay-frontend
+      context: .
+      dockerfile: ./trackplay-frontend/Dockerfile
     env_file:
-      - .env.frontend
+      - ./trackplay-frontend/.env
     environment:
       - WATCHPACK_POLLING=true
     volumes:
@@ -62,9 +65,10 @@ services:
   trackplay-catalog:
     container_name: trackplay-catalog
     build:
-      context: ./trackplay-catalog
+      context: .
+      dockerfile: ./trackplay-catalog/Dockerfile
     env_file:
-      - .env.catalog
+      - ./trackplay-catalog/.env
     secrets:
       - igdb_client_id
       - igdb_client_secret
@@ -73,13 +77,16 @@ services:
       - ./trackplay-catalog/src:/app/src
     networks:
       - trackplay-public
+    ports:
+      - "4002:4002"
 
   trackplay-notifications:
     container_name: trackplay-notifications
     build:
-      context: ./trackplay-notifications
+      context: .
+      dockerfile: ./trackplay-notifications/Dockerfile
     env_file:
-      - .env.notifications
+      - ./trackplay-notifications/.env
     volumes:
       - ./trackplay-notifications/src:/app/src
     networks:
@@ -132,8 +139,8 @@ volumes:
 
 secrets:
   igdb_client_id:
-    file: ./.secrets/catalog/igdb_client_id
+    file: ./.secrets/trackplay-catalog/igdb_client_id
   igdb_client_secret:
-    file: ./.secrets/catalog/igdb_client_secret
+    file: ./.secrets/trackplay-catalog/igdb_client_secret
   rawg_api_key:
-    file: ./.secrets/catalog/rawg_api_key
+    file: ./.secrets/trackplay-catalog/rawg_api_key

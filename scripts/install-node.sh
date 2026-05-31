@@ -10,7 +10,6 @@ fi
 
 if command -v node &> /dev/null; then
   echo "✔️ Node.js ya está instalado: $(node -v)"
-  echo "🔍 pnpm: $(pnpm -v)"
   exit 0
 fi
 
@@ -25,4 +24,3 @@ nvm install node
 nvm alias default node
 
 echo "✅ Node.js instalado: $(node -v)"
-echo "🔍 pnpm: $(pnpm -v)"

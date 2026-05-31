@@ -54,6 +54,7 @@ Thumbs.db
 /trackplay-auth/
 /trackplay-backend/
 /trackplay-catalog/
+/trackplay-catalog-domain/
 /trackplay-core/
 /trackplay-frontend/
 /trackplay-notifications/
